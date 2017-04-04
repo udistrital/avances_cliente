@@ -4,13 +4,11 @@
     <h3 align="center">{{ title }}</h3>
   </div>
   <div class="panel-body">
-
     <div class="form-group">
-      <p align="center"> {{ message }} </p>
     </div>
     <div class="contenedor" data-ng-show="viewState === possibleStates[0]">
-      <table id="solicitudAvance" class="table datatable table-striped table-bordered">
-        <thead>
+      <table id="solicitudAvance" class="table table-bordered">
+        <thead align="center">
           <tr>
             <th>
               <div class="col-sm-12">
@@ -37,7 +35,7 @@
             <th>Fecha Registro</th>
             <th colspan="2">Beneficiario</th>
             <th>Estado Actual</th>
-            <th colspan="3" align="center">Opciones</th>
+            <th colspan="3" align="center">Certificar</th>
           </tr>
         </thead>
         <tbody>
@@ -45,32 +43,25 @@
             <td>{{sav.Vigencia}}</td>
             <td>{{sav.Consecutivo}}</td>
             <td>{{sav.Objetivo}}</td>
-            <td>{{sav.ValorTotal | currency }}</td>
-            <td>{{sav.FechaRegistro}}</td>
+            <td align="right">{{sav.ValorTotal | currency }}</td>
+            <td>{{sav.FechaRegistro | date:'medium'}}</td>
             <td>{{sav.Documento}}</td>
             <td>{{sav.Nombre}} {{sav.Apellido}}</td>
             <td>{{sav.EstadoActual}}</td>
             <td>
               <div ng-if="sav.EstadoActual == 'Verificado'">
-                <a class="btn btn-outline btn-primary btn-md" id="IdTipo" href="#/certificarNecesidadAvance/{{sav.Vigencia}}/{{sav.Consecutivo}}">Certificar Necesidad</a>
+                <a class="btn btn-outline btn-primary btn-sm" id="IdTipo" href="#/certificarNecesidadAvance/{{sav.Vigencia}}/{{sav.Consecutivo}}">Necesidad</a>
               </div>
-            </td>
-            <td>
               <div ng-if="sav.EstadoActual == 'Verificado'">
-                <a class="btn btn-outline btn-primary btn-md"  href="#/certificarApruebaAvance/{{sav.Vigencia}}/{{sav.Consecutivo}}">Certificar Aprobación</a> </p>
+                <a class="btn btn-outline btn-primary btn-sm"  href="#/certificarApruebaAvance/{{sav.Vigencia}}/{{sav.Consecutivo}}">Aprobación</a> </p>
               </div>
-            </td>
-            <td>
               <div ng-if="sav.EstadoActual == 'Aprobado'">
-                <a class="btn btn-outline btn-primary btn-md" href="#/certificarGiroAvance/{{sav.Vigencia}}/{{sav.Consecutivo}}">Certificar Giro</a> </p>
+                <a class="btn btn-outline btn-primary btn-sm" href="#/certificar_giro_avance/{{sav.Vigencia}}/{{sav.Consecutivo}}">Giro</a> </p>
               </div>
             </td>
             <!--td><a class="btn btn-outline btn-primary btn-md" id="IdTipo" href="" ng-click="deleteTipo(d.IdTipo)" onclick="return confirm('¿Esta seguro de Borrar el registro?');" >Borrar</a></td></td-->
           </tr>
         </tbody>
       </table>
-    </div>
-    <div class="panel-footer">
-      Panel Footer
     </div>
   </div>
