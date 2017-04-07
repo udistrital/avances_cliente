@@ -15,5 +15,6 @@ angular.module('nixApp')
       HOST_SICAPITAL: host_sicapital,
       HOST_SOLICITUD_AVANCE: host+'/tesoreria/solicitudavance',
       HOST_TIPO_AVANCE: host+ '/tesoreria/tipoavance',
-      HOST_SERVICE_SIC: host_sicapital+'/sicws/ws/sicapitalAPI.php/?'
+      HOST_SERVICE_SIC: host_sicapital+'/sicws/ws/sicapitalAPI.php/?',
+      POST_CODE: 200
   });
