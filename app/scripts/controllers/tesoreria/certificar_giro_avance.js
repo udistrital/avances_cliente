@@ -26,13 +26,8 @@ angular.module('nixApp')
       });
     });
 
-
-
     var idsolicitud = $routeParams.idSol;
     var vigencia = $routeParams.vig;
-
-
-
 
     /******busca datos de solicitud y asigna al array principal el tipo de avance*******/
     $http.get(CONF.HOST_SOLICITUD_AVANCE + '/solicitud/' + vigencia + '/' + idsolicitud + '/0')

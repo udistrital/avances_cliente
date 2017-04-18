@@ -154,12 +154,12 @@ angular
         controllerAs: 'certificarGiroAvance'
       })
       .when('/listar_legalizar_avance', {
-        templateUrl: 'views/tesoreria/avances/solicitud_avance/listar_legalizar_avance.html',
+        templateUrl: 'views/tesoreria/avances/legalizar_avance/listar_legalizar_avance.html',
         controller: 'ListarLegalizarAvanceCtrl',
         controllerAs: 'listarLegalizarAvance'
       })
       .when('/verificar_soportes_avance/:vig/:IdSol', {
-        templateUrl: 'views/tesoreria/avances/solicitud_avance/verificar_soportes_avance.html',
+        templateUrl: 'views/tesoreria/avances/legalizar_avance/verificar_soportes_avance.html',
         controller: 'VerificarSoportesAvanceCtrl',
         controllerAs: 'verificarSoportesAvance'
       })
