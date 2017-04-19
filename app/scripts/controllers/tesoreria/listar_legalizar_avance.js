@@ -13,7 +13,6 @@ angular.module('nixApp')
   .controller('ListarLegalizarAvanceCtrl', function($scope, $http, $routeParams, $filter, vigencia, CONF) {
     //var idReqFind;
 
-    $scope.title = 'Legalización de Avance';
     $scope.message = 'Listado de Avances';
 
     vigencia.vigencia = vigencia.vigencia_actual;

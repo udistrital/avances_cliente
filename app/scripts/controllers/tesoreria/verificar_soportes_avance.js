@@ -8,8 +8,8 @@
  * Controller of the nixApp
  */
 angular.module('nixApp')
-  .controller('VerificarSoportesAvanceCtrl',  function ($scope, $http, $routeParams, $filter, CONF) {
-    $scope.title = 'Legalización de Avance';
+  .controller('VerificarSoportesAvanceCtrl', function($scope, $http, $routeParams, $filter, CONF) {
+    $scope.title = 'Legalización de Avances';
     $scope.message = 'Verificar Soportes';
 
     var idsolicitud = $routeParams.IdSol;
@@ -29,8 +29,6 @@ angular.module('nixApp')
     $scope.asignarFecha = function(fecha) {
       $scope.solicitudAvance.Presupuesto.FechaCertificacion = fecha;
     };
-
-
 
 
     /******busca datos de solicitud y asigna al array principal el tipo de avance*******/
@@ -92,7 +90,7 @@ angular.module('nixApp')
           .then(function(responseTipo) {
             //alert(JSON.stringify(responseTipo))
             /*Variable auxiliar ayuda a la asignacion al array*/
-            var aux = 0;
+            //var aux = 0;
             $scope.solicitudAvance.TipoAvance = responseTipo.data;
             /******busca datos de requisitos y asigna al array principal el tipo de avance*******/
             angular.forEach($scope.solicitudAvance.TipoAvance, function(tipoAvance, aux) {
@@ -122,12 +120,12 @@ angular.module('nixApp')
       });
 
     $scope.addSoporte = function() {
-      soporteAvance = [];
+      var soporteAvance = [];
       var reg = 0;
       angular.forEach($scope.solicitudAvance.TipoAvance, function(tipoAvance, aux) {
         var idtipo = parseInt(tipoAvance.IdTipo);
         var idsolicitud = parseInt(tipoAvance.IdSolicitud);
-        angular.forEach($scope.solicitudAvance.TipoAvance[aux].Requisitos, function(requisitoAvance, aux2) {
+        angular.forEach($scope.solicitudAvance.TipoAvance[aux].Requisitos, function(requisitoAvance) {
           var idreq = parseInt(requisitoAvance.IdReq);
           soporteAvance[reg] = {
             IdTipo: idtipo,
@@ -153,9 +151,10 @@ angular.module('nixApp')
         });
       });
       //alert(JSON.stringify(verificaAvance))
-      $http.post(hostLegalizarAvance + '/verificasoporte', soporteAvance)
+      $http.post(CONF.HOST_LEGALIZAR_AVANCE + '/verificasoporte', soporteAvance)
         .then(function(info) {
-          alert("Se registró la verificación del soporte")
+          alert("Se registró la verificación del soporte");
+          console.log(info);
         });
       $scope.solicitudAvance = {};
       window.location = "#/listarLegalizarAvance";
